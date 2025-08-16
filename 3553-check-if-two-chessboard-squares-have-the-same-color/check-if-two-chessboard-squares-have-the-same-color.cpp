@@ -11,8 +11,6 @@ class Solution {
     }
 public:
     bool checkTwoChessboards(string coordinate1, string coordinate2) {
-        string b = color(coordinate1);
-        string w = color(coordinate2);
-        return (b==w)?true:false;
+        return color(coordinate1) == color(coordinate2);
     }
 };
