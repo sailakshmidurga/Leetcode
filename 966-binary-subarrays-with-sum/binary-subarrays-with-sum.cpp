@@ -1,20 +1,30 @@
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
-         unordered_map<int, int> prefixSumCount;
-        int sum = 0, result = 0;
-        prefixSumCount[0] = 1; // To handle subarrays that start from index 0
-
-        for (int num : nums) {
-            sum += num;
-            // Check if there is a prefix sum that when removed gives 'goal'
-            if (prefixSumCount.find(sum - goal) != prefixSumCount.end()) {
-                result += prefixSumCount[sum - goal];
+         return atmost(nums,goal) - atmost(nums,goal-1);
+        
+    }
+    private:
+    int atmost(vector<int>&nums,int goal)
+    {
+        if(goal < 0) return 0;
+        int n = nums.size();
+        int l = 0;
+        int r = 0;
+        int sum = 0;
+        int count = 0;
+        while(r<n)
+        {
+            sum += nums[r];
+            while(sum > goal)
+            {
+                sum -= nums[l];
+                l++;
             }
-            // Record the current prefix sum
-            prefixSumCount[sum]++;
+            count = count + (r-l+1);
+            r++;
         }
+        return count;
 
-        return result;
     }
 };
