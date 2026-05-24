@@ -8,15 +8,15 @@ public:
         {
             ls += cardPoints[i];
         }
-        int maxLen = ls;
+        int maxScore = ls;
         int rightIndex = n-1;
         for(int i = k-1;i>=0;i--)
         {
             ls -= cardPoints[i];
             rs += cardPoints[rightIndex];
             rightIndex--;
-            maxLen = max(maxLen,ls+rs);
+            maxScore = max(maxScore,ls+rs);
         }
-        return maxLen;
+        return maxScore;
     }
 };
