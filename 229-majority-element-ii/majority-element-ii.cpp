@@ -1,20 +1,20 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
-        int n = nums.size();
-        vector<int>res;
-        map<int,int>mpp;
-        for(int i =0;i<n;i++)
+         unordered_map<int,int>mpp;
+        vector<int>ans;
+        int k = nums.size()/3;
+        for(int i = 0;i<nums.size();i++)
         {
             mpp[nums[i]]++;
         }
         for(auto it:mpp)
         {
-            if(it.second>(n/3))
+            if(it.second > k)
             {
-                res.push_back(it.first);
+                ans.push_back(it.first);
             }
         }
-      return res;  
+        return ans;
     }
 };
