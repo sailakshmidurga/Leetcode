@@ -14,7 +14,7 @@ public:
         ListNode* dummy = new ListNode(0,head);
         ListNode* temp1 = dummy;
         ListNode* temp2 = dummy;
-        for(int i =0;i<=n;i++)
+        for(int i = 0;i<=n;i++)
         {
             temp1 = temp1->next;
         }
