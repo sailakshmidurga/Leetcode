@@ -1,6 +1,6 @@
 class StockSpanner {
-    vector<int>arr;
 public:
+vector<int>arr;
     StockSpanner() {
         
     }
@@ -16,9 +16,3 @@ public:
         return cnt;
     }
 };
-
-/**
- * Your StockSpanner object will be instantiated and called as such:
- * StockSpanner* obj = new StockSpanner();
- * int param_1 = obj->next(price);
- */
