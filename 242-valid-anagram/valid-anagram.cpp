@@ -20,7 +20,6 @@ public:
             if(t.find(c) == string::npos)
             {
                 res = false;
-                break;
             }
             if(mpp1[c]!=mpp2[c])
             {
@@ -33,7 +32,6 @@ public:
             if(s.find(c) == string::npos)
             {
                 res = false;
-                break;
             }
             if(mpp1[c]!=mpp2[c])
             {
