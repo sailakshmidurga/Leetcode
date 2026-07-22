@@ -1,21 +1,17 @@
 class Solution {
 public:
     int numIdenticalPairs(vector<int>& nums) {
+        unordered_map<int,int>mpp;
+        int cnt = 0;
         int n = nums.size();
-        int j = n-1;
-        int res = 0;
-        for(int i =0;i<n;i++)
+        for(int i = 0;i<n;i++)
         {
-            j = n-1;
-            while(i<j)
+            if(mpp.find(nums[i]) != mpp.end())
             {
-                if(nums[i]==nums[j])
-                {
-                    res++;
-                }
-                j--;
+                cnt += mpp[nums[i]];
             }
+                mpp[nums[i]]++;
         }
-        return res;
+        return cnt;
     }
 };
