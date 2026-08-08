@@ -1,28 +1,23 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-            int n=nums.size();
-            int r=0;
-            int s = n/2;
-            unordered_map<int,int>mpp;
-            for(int i=0;i<n;i++)
+        int n = nums.size();
+        int s = n/2;
+        unordered_map<int,int>mpp;
+        for(int i = 0;i<n;i++)
+        {
+            mpp[nums[i]]++;
+        }
+        int maxCount = 0;
+        int maxDigit = 0;
+        for(auto it:mpp)
+        {
+            if(it.second > s)
             {
-                mpp[nums[i]]++;
+                maxDigit = it.first;
+                maxCount = it.second;
             }
-            int maxcount=0;
-            int maxdigit=0;
-            for(auto it:mpp)
-            {
-                // if(it.second>maxcount)
-                // {
-                //     maxcount = it.second;
-                //     maxdigit = it.first;
-                // }
-                if(it.second > s)
-                {
-                    maxdigit = it.first;
-                }
-            }
-            return maxdigit;
+        }
+        return maxDigit;
     }
 };
