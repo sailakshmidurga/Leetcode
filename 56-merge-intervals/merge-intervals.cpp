@@ -4,15 +4,16 @@ public:
         vector<vector<int>>ans;
         sort(intervals.begin(),intervals.end());
         int n = intervals.size();
-        for(int i = 0;i<n;i++)
+        ans.push_back(intervals[0]);
+        for(int i = 1;i<n;i++)
         {
-            if(ans.empty() || ans.back()[1] < intervals[i][0])
+            if(ans.back()[1] >= intervals[i][0])
             {
-                ans.push_back(intervals[i]);
+                ans.back()[1] = max(intervals[i][1],ans.back()[1]);
             }
             else
             {
-                ans.back()[1] = max(ans.back()[1],intervals[i][1]);
+                ans.push_back(intervals[i]);
             }
         }
         return ans;
