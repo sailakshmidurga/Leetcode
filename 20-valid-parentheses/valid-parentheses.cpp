@@ -1,25 +1,27 @@
 class Solution {
 public:
     bool isValid(string s) {
-       stack<int>st;
-       for(char c:s)
-       {
-            if(c == '(' || c == '[' || c == '{')
-            {
-                st.push(c);
-            }
+        stack<int>st;
+        for(int i = 0;i<s.size();i++)
+        {
+            if(s[i] == '(' || s[i] == '[' || s[i] == '{') st.push(s[i]);
             else
             {
                 if(st.empty()) return false;
-                if(st.top() == '(' && c == ')' || st.top() == '[' && c == ']' || st.top() == '{' && c == '}' )
-                {
-                    st.pop();
-                }
-                else{
-                    return false;
-                }
+                if(s[i] == ')' && st.top() == '(' || s[i] == ']' && st.top() == '['
+            ||s[i] == '}' && st.top() == '{')
+            {
+                st.pop();
             }
-       }
-       return st.empty();
+            else
+            {
+                return false;
+            }
+            {
+
+            }
+        }
+        }
+        return st.empty();
     }
 };
