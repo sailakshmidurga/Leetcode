@@ -9,22 +9,23 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+ //reverse preorder i am doing here -> root->right->left
 class Solution {
-    public:
-    void recursion(TreeNode* node,int level,vector<int>&res)
+public:
+    void right(TreeNode* node,int col,vector<int>&res)
     {
-        if(res.size() == level) // to check that node, is it the first node that came in that level or row if it is then push into res
+        if(!node) return;
+        if(res.size() == col)
         {
             res.push_back(node->val);
         }
-        if(node->right) recursion(node->right,level+1,res);
-        if(node->left) recursion(node->left,level+1,res);
+        if(node->right) right(node->right,col + 1,res);
+        if(node->left) right(node->left,col + 1,res);
     }
-public:
     vector<int> rightSideView(TreeNode* root) {
         vector<int>res;
-        if(!root) return res;
-        recursion(root,0,res);
+        right(root,0,res);
         return res;
     }
 };
