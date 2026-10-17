@@ -13,7 +13,7 @@ class Solution {
     public:
     void recursion(TreeNode* node,int level,vector<int>&res)
     {
-        if(res.size() == level)
+        if(res.size() == level) // to check that node, is it the first node that came in that level or row if it is then push into res
         {
             res.push_back(node->val);
         }
