@@ -10,22 +10,23 @@
  * };
  */
 class Solution {
-    public:
-    void inorder(TreeNode* node,int& k,int& result)
-    {
-        if(!node) return;
-        inorder(node->left,k,result);
-        if(--k == 0)
-        {
-            result = node->val;
-            return;
-        }
-        inorder(node->right,k,result);
-    }
 public:
+    void inorder(TreeNode* root,int &k,int &res)
+    {
+        if(!root) return;
+        inorder(root->left,k,res);
+            if(--k == 0)
+            {
+                res = root->val;
+                return;
+            }
+        inorder(root->right,k,res);
+    }
     int kthSmallest(TreeNode* root, int k) {
-        int result = -1;
-        inorder(root,k,result);
-        return result;
+        //the inorder traversal of a binary tree is always the elements in ascending order
+        int res = -1;
+        if(!root) return res;
+        inorder(root,k,res);
+        return res;
     }
 };
