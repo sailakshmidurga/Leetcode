@@ -10,9 +10,10 @@
  * };
  */
 class Solution {
-    public:
+public:
     TreeNode* helper(TreeNode* root)
     {
+        //if no left child
         if(root->left == nullptr)
         {
             return root->right;
@@ -21,9 +22,9 @@ class Solution {
         {
             return root->left;
         }
-        TreeNode* rightChild = root->right;
+        TreeNode* rightTree = root->right;
         TreeNode* lastRight = findLastRight(root->left);
-        lastRight->right = rightChild;
+        lastRight->right = rightTree;
         return root->left;
     }
     TreeNode* findLastRight(TreeNode* root)
@@ -31,28 +32,18 @@ class Solution {
         if(!root->right) return root;
         return findLastRight(root->right);
     }
-public:
     TreeNode* deleteNode(TreeNode* root, int key) {
-        if(!root) return nullptr;
-        TreeNode* dummy = root;
-        if(root->val == key) return helper(root);
-        while(root)
-        {
-            if(root->val > key)
-            {
-                if(root->left!= nullptr && root->left->val == key)
-                {
-                    root->left = helper(root->left);
-                    break;
-                }
-                else
-                {
-                    root = root->left;
-                }
-            }
-            else
-            {
-                if(root->right!=nullptr && root->right->val == key)
+       if(!root) return nullptr;
+       TreeNode* dummy = root;
+       if(root->val == key)
+       {
+            return helper(root);
+       }
+       while(root)
+       {
+          if(root->val <= key)
+          {
+                if(root->right && root->right->val == key)
                 {
                     root->right = helper(root->right);
                     break;
@@ -61,8 +52,20 @@ public:
                 {
                     root = root->right;
                 }
+          }
+          else
+          {
+            if(root->left && root->left->val == key)
+            {
+                root->left = helper(root->left);
+                break;
             }
-        }
-        return dummy;
+            else
+            {
+                root = root->left;
+            }
+          }
+       }
+       return dummy;
     }
 };
