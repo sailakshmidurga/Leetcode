@@ -2,9 +2,9 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int n = s.size();
-        int l = 0;
         int r = 0;
-        int maxlen = 0;
+        int l = 0;
+        int maxLen = 0;
         unordered_map<char,int>mpp;
         while(r<n)
         {
@@ -12,11 +12,10 @@ public:
             {
                 l = max(l,mpp[s[r]]+1);
             }
-            maxlen = max(maxlen,r-l+1);
             mpp[s[r]] = r;
+            maxLen = max(maxLen,r-l+1);
             r++;
-
         }
-        return maxlen;
+        return maxLen;
     }
 };
